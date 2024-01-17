@@ -1,6 +1,15 @@
 import requests
 
-BASE = "http://127.0.0.1:5000/"
 
-response = requests.patch(BASE + "video/1", {"views": 9298388})
-print(response.json())
+base_url = "https://api.mangadex.org"
+
+title = "jujutsu kaisen"
+
+r = requests.get(
+    f"{base_url}/manga",
+    params={"title": title}
+)
+
+manga_data = r.json()["data"]
+
+print(manga_data)
